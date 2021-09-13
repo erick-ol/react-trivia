@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap') ;
 
-:local( .purple_aside ) {
+.purple_aside {
   align-items: center;
   background-color: rgb(139, 85, 229);
   display: flex;
@@ -8,30 +8,34 @@
   width: 50%;
 }
 
-:local( .svg_login ) {
+.svg_login {
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
 
-:local( .login_text ) {
+.svg_login svg {
+  width: 50%;
+}
+
+.login_text {
   color: white;
   margin-top: 30px;
   padding: 0 60px;
 }
 
-:local( .login_text h1 ) {
+.login_text h1 {
   font-family: Source Sans Pro , sans-serif;
   font-size: 4em;
   margin-bottom: 15px;
 }
 
-:local( .login_text p ) {
+.login_text p {
   font-size: 1.5em;
   margin-bottom: 30px;
 }
 
-:local( .login_text a ) {
+.login_text a {
   align-items: center;
   background-color: rgb(255, 198, 92);
   border-radius: 10px;
@@ -43,15 +47,15 @@
   width: auto;
 }
 
-:local( .play_btn img ) {
+.play_btn img {
   margin-left: 15px;
 }
 
-:local( .login_text a img ) {
+.login_text a img {
   margin-left: 15px;
 }
 
-:local( .main_login ) {
+.main_login {
   align-items: center;
   display: flex;
   height: 100vh;
@@ -59,23 +63,23 @@
   width: 50%;
 }
 
-:local( .login_elements_main ) {
+.login_elements_main {
   display: flex;
   flex-direction: column;
 }
 
-:local( .logo_img ) {
+.logo_img {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
 
-:local( .login_input ) {
+.login_input {
   display: flex;
   flex-direction: column;
 }
 
-:local( .login_input input ) {
+.login_input input {
   border: 1px solid rgb(53, 48, 63);
   border-radius: 10px;
   font-size: 1.4em;
@@ -85,12 +89,12 @@
   padding: 5px 20px;
 }
 
-:local( .login_btns ) {
+.login_btns {
   display: flex;
   flex-direction: column;
 }
 
-:local( .play_btn ) {
+.play_btn {
   align-items: center;
   background-color: rgb(139, 85, 229);
   border: none;
@@ -105,15 +109,25 @@
   width: auto;
 }
 
-:local( .play_btn:disabled ) {
+.play_btn:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-:local( .config_link ) {
+.config_link {
   background: none;
   border: none;
   display: inline-flex;
   font-size: 0;
   margin-top: 15px;
+}
+
+@media (max-width: 880px) {
+  .purple_aside {
+    display: none;
+  }
+
+  .main_login {
+    width: 100%;
+  }
 }

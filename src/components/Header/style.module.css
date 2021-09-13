@@ -1,4 +1,4 @@
-:local( .header ) {
+.header {
   align-items: center;
   background-color: rgb(255, 199, 93);
   border-radius: 20px;
@@ -8,17 +8,27 @@
   width: 80%;
 }
 
-:local( .header_text ) {
+.header_text {
   font-size: 1.5em;
 }
 
-:local( .person ) {
+.person {
   align-items: center;
   display: flex;
 }
 
-:local( .person img ) {
+.person img {
   border-radius: 50%;
   height: 80px;
   margin-right: 20px;
+}
+
+@media (max-width: 700px) {
+  .person img {
+    height: 50px;
+  }
+
+  .header_text {
+    font-size: 1.125em;
+  }
 }
