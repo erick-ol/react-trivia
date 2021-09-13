@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap') ;
+
+:local( .purple_aside ) {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+:local( .elements_purple ) {
+  width: 100%;
+}
+
+:local( .svg_ranking ) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:local( .svg_ranking svg ) {
+  max-width: 700px;
+}
+
+:local( .ranking_title ) {
+  text-align: center;
+}
+
+:local( .ranking_title h1 ) {
+  color: white;
+  font-family: Source Sans Pro , sans-serif;
+  font-size: 4.5em;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+:local( .white_side ) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+}
+
+:local( .white_side ul ) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 600px;
+  overflow: scroll;
+}
+
+:local(.white_side ul::-webkit-scrollbar-track) {
+  -webkit-box-shadow: none;
+	background-color: transparent;
+  border: none;
+}
+
+:local(.white_side ul::-webkit-scrollbar) {
+  width: 10px;
+  border: none;
+	background-color: none;
+}
+
+:local(.white_side ul::-webkit-scrollbar-thumb) {
+  background-color: rgb(255, 199, 93);
+	border: none;
+}
+
+:local( .ranking_ind ) {
+  align-items: center;
+  background-color: rgb(255, 199, 93);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px 30px;
+  width: 80%;
+}
+
+:local( .header_text ) {
+  font-size: 1.5em;
+}
+
+:local( .person ) {
+  align-items: center;
+  display: flex;
+}
+
+:local( .person img ) {
+  border-radius: 50%;
+  height: 80px;
+  margin-right: 20px;
+}
+
+:local( .white_side a ) {
+  text-decoration: none;
+}
+
+:local( .white_side button ) {
+  align-items: center;
+  background-color: rgb(255, 199, 93);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+}
