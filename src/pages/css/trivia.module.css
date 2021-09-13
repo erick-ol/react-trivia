@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap') ;
+
+:local( .purple_aside ) {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+:local( .elements_purple ) {
+  width: 100%;
+}
+
+:local( .svg_time ) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:local( .time_text ) {
+  text-align: center;
+}
+
+:local( .time_text span ) {
+  color: white;
+  font-family: Source Sans Pro , sans-serif;
+  font-size: 9em;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+:local( .white_side ) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+}
+
+:local( .questions_main ) {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+:local( .category ) {
+  display: none;
+}
+
+:local( .question ) {
+  background-color: rgb(255, 199, 93);
+  border-radius: 20px;
+  display: flex;
+  margin-bottom: 30px;
+  padding: 25px 30px;
+  width: 100%;
+}
+
+:local( .question span ) {
+  font-size: 2em;
+}
+
+:local( .questions_main ul ) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  width: 100%;
+}
+
+:local( .questions_main li ) {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+}
+
+:local( .answer ) {
+  background-color: rgb(255, 215, 140);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  font-size: 2em;
+  font-weight: normal;
+  padding: 25px 30px;
+  width: 100%;
+}
+
+:local( .correct ) {
+  background-color: rgb(208, 254, 207);
+}
+
+:local( .incorrect ) {
+  background-color: rgb(255, 175, 175);
+}
+
+:local( .next ) {
+  align-items: center;
+  background-color: rgb(255, 199, 93);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 5px 30px;
+  text-transform: uppercase;
+}
+
+:local( .next img ) {
+  margin-left: 15px;
+}

@@ -1,7 +1,10 @@
 import React from 'react';
-import './style.css';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import TimeSvg from '../components/SVG/TimeSvg';
+import Loading from '../components/SVG/Loading';
+import styles from './css/trivia.module.css';
+import nextImg from '../assets/img/next_black.png';
 
 class Questions extends React.Component {
   constructor() {
@@ -60,7 +63,10 @@ class Questions extends React.Component {
 
   isAnswered(className) {
     const { answered } = this.state;
-    return answered ? className : '';
+    if (className === 'correct') {
+      return answered ? styles.correct : '';
+    }
+    return answered ? styles.incorrect : '';
   }
 
   isCompleted() {
@@ -127,8 +133,10 @@ class Questions extends React.Component {
         type="button"
         onClick={ this.linkOrNext }
         data-testid="btn-next"
+        className={ styles.next }
       >
         Pŕoxima
+        <img src={ nextImg } alt="proxima" />
       </button>
     );
   }
@@ -136,49 +144,59 @@ class Questions extends React.Component {
   render() {
     const { seconds } = this.state;
     const { questionsArray, id, answered } = this.state;
-    if (questionsArray.length === 0) return <p>Loading...</p>;
+    if (questionsArray.length === 0) return <Loading />;
     return (
-      <div>
-        <div>
+      <>
+        <div className={ styles.purple_aside }>
+          <div className={ styles.elements_purple }>
+            <div className={ styles.svg_time }>
+              <TimeSvg />
+            </div>
+            <div className={ styles.time_text }>
+              <span>{ seconds }</span>
+            </div>
+          </div>
+        </div>
+        <div className={ styles.white_side }>
           <Header />
-          <p>
-            Category:
-            <span data-testid="question-category">{questionsArray[id].category}</span>
-          </p>
-          <p>
-            Question:
-            <span data-testid="question-text">{questionsArray[id].question}</span>
-          </p>
-          <ul>
-            <li>
-              <button
-                type="button"
-                data-testid="correct-answer"
-                onClick={ this.sumScore }
-                className={ this.isAnswered('correct') }
-                disabled={ this.isCompleted() }
-              >
-                {questionsArray[id].correct_answer}
-              </button>
-            </li>
-            {questionsArray[id].incorrect_answers.map((incorrect, i) => (
-              <li key={ i }>
+          <div className={ styles.questions_main }>
+            <p className={ styles.category }>
+              Category:
+              <span data-testid="question-category">{questionsArray[id].category}</span>
+            </p>
+            <p className={ styles.question }>
+              <span data-testid="question-text">{questionsArray[id].question}</span>
+            </p>
+            <ul>
+              <li>
                 <button
                   type="button"
-                  data-testid={ `wrong-answer-${i}` }
-                  onClick={ this.changeState }
-                  className={ this.isAnswered('incorrect') }
+                  data-testid="correct-answer"
+                  onClick={ this.sumScore }
+                  className={ `${this.isAnswered('correct')} ${styles.answer}` }
                   disabled={ this.isCompleted() }
                 >
-                  {incorrect}
+                  {questionsArray[id].correct_answer}
                 </button>
               </li>
-            ))}
-          </ul>
-          <div>{ seconds }</div>
+              {questionsArray[id].incorrect_answers.map((incorrect, i) => (
+                <li key={ i }>
+                  <button
+                    type="button"
+                    data-testid={ `wrong-answer-${i}` }
+                    onClick={ this.changeState }
+                    className={ `${this.isAnswered('incorrect')} ${styles.answer}` }
+                    disabled={ this.isCompleted() }
+                  >
+                    {incorrect}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {answered && this.renderButton()}
+          </div>
         </div>
-        {answered && this.renderButton()}
-      </div>
+      </>
     );
   }
 }
