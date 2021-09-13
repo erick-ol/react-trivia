@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap') ;
+
+:local( .purple_aside ) {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+:local( .svg_login ) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:local( .login_text ) {
+  color: white;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+:local( .login_text h1 ) {
+  font-family: Source Sans Pro , sans-serif;
+  font-size: 4em;
+  margin-bottom: 15px;
+}
+
+:local( .login_text p ) {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+:local( .login_text a ) {
+  align-items: center;
+  background-color: rgb(255, 198, 92);
+  border-radius: 10px;
+  color: rgb(53, 48, 63);
+  display: inline-flex;
+  font-size: 1.5em;
+  padding: 5px 15px;
+  text-decoration: none;
+  width: auto;
+}
+
+:local( .play_btn img ) {
+  margin-left: 15px;
+}
+
+:local( .login_text a img ) {
+  margin-left: 15px;
+}
+
+:local( .main_login ) {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 50%;
+}
+
+:local( .login_elements_main ) {
+  display: flex;
+  flex-direction: column;
+}
+
+:local( .logo_img ) {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+:local( .login_input ) {
+  display: flex;
+  flex-direction: column;
+}
+
+:local( .login_input input ) {
+  border: 1px solid rgb(53, 48, 63);
+  border-radius: 10px;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  max-width: 380px;
+  outline: none;
+  padding: 5px 20px;
+}
+
+:local( .login_btns ) {
+  display: flex;
+  flex-direction: column;
+}
+
+:local( .play_btn ) {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  width: auto;
+}
+
+:local( .play_btn:disabled ) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+:local( .config_link ) {
+  background: none;
+  border: none;
+  display: inline-flex;
+  font-size: 0;
+  margin-top: 15px;
+}

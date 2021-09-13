@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveEmail } from '../actions';
+import LoginSvg from '../components/SVG/LoginSvg';
+import styles from './css/login.module.css';
+import github from '../assets/img/github.png';
+import ls_logo from '../assets/img/ls-logo.png';
+import next from '../assets/img/next.png';
+import gear from '../assets/img/gear.png';
 
 class Login extends React.Component {
   constructor() {
@@ -56,42 +62,70 @@ class Login extends React.Component {
   render() {
     const { email, nameUser } = this.state;
     return (
-      <div>
-        <div>
-          <input
-            type="text"
-            data-testid="input-player-name"
-            name="nameUser"
-            placeholder="name"
-            value={ nameUser }
-            onChange={ this.handleChange }
-          />
+      <>
+        <div className={ styles.purple_aside }>
+          <div className={ styles.login_elements }>
+            <div className={ styles.svg_login }>
+              <LoginSvg />
+            </div>
+            <div className={ styles.login_text }>
+              <h1>Trivia React Redux</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <a href="https://github.com/tryber/sd-013-a-project-trivia-react-redux/pull/1" target="_blank">
+                GitHub do Projeto
+                <img src={ github } alt="github logo" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="email"
-            data-testid="input-gravatar-email"
-            value={ email }
-            onChange={ this.handleChange }
-          />
+        <div className={ styles.main_login }>
+          <div className={ styles.login_elements_main }>
+            <div className={ styles.logo_img }>
+              <img src={ ls_logo } alt="logo ls" />
+            </div>
+            <div className={ styles.login_input }>
+              <input
+                type="text"
+                data-testid="input-player-name"
+                name="nameUser"
+                placeholder="name"
+                value={ nameUser }
+                onChange={ this.handleChange }
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="e-mail"
+                data-testid="input-gravatar-email"
+                value={ email }
+                onChange={ this.handleChange }
+              />
+            </div>
+            <div className={ styles.login_btns }>
+              <button
+                type="button"
+                disabled={ !(Boolean(email) && Boolean(nameUser)) }
+                onClick={ this.onSubmitForm }
+                data-testid="btn-play"
+                className={ styles.play_btn }
+              >
+                Jogar
+                <img src={ next } alt="" />
+              </button>
+              <button
+                type="button"
+                data-testid="btn-settings"
+                className={ styles.config_link }
+              >
+                <Link to="/configs">
+                  Configurações
+                  <img src={ gear } alt="configs" />
+                </Link>
+              </button>
+            </div>
+          </div>
         </div>
-        <button
-          type="button"
-          disabled={ !(Boolean(email) && Boolean(nameUser)) }
-          onClick={ this.onSubmitForm }
-          data-testid="btn-play"
-        >
-          Jogar
-        </button>
-        <button
-          type="button"
-          data-testid="btn-settings"
-        >
-          <Link to="/configs">Configurações</Link>
-        </button>
-      </div>
+      </>
     );
   }
 }
