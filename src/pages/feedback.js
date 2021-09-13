@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import md5 from 'crypto-js/md5';
 import Header from '../components/Header';
+import styles from './css/feedback.module.css';
+import FeedbackSvg from '../components/SVG/FeedbackSvg';
 
 class FeedBack extends React.Component {
   constructor() {
@@ -52,31 +54,50 @@ class FeedBack extends React.Component {
     const getState = JSON.parse(localStorage.getItem('state'));
     const { player } = getState;
     return (
-      <div>
-        <p data-testid="feedback-text">Página FeedBack</p>
-        <Header />
-        {this.message()}
-        <p data-testid="feedback-total-score">
-          {player.score}
-          {' '}
-          pontos
-        </p>
-        <p data-testid="feedback-total-question">
-          {player.assertions}
-          {' '}
-          acertos
-        </p>
-        <Link to="/ranking">
-          <button type="button" data-testid="btn-ranking">
-            Ver Ranking
-          </button>
-        </Link>
-        <Link to="/">
-          <button data-testid="btn-play-again" type="button">
-            Jogar novamente
-          </button>
-        </Link>
-      </div>
+      <>
+        <div className={ styles.purple_aside }>
+          <div className={ styles.elements_purple }>
+            <div className={ styles.svg_feedback }>
+              <FeedbackSvg />
+            </div>
+            <div className={ styles.feedback_title }>
+              <h1>Feedback</h1>
+            </div>
+          </div>
+        </div>
+        <div className={ styles.white_side }>
+          <Header />
+          <div className={ styles.feedback_text }>
+            <p className={ styles.message }>{ this.message() }</p>
+            <p data-testid="feedback-total-question">
+              Você obteve
+              {' '}
+              {player.assertions}
+              {' '}
+              acertos
+            </p>
+            <p data-testid="feedback-total-score">
+              Um total de
+              {' '}
+              {player.score}
+              {' '}
+              pontos
+            </p>
+          </div>
+          <div className={ styles.feedback_btns }>
+            <Link to="/ranking">
+              <button type="button" data-testid="btn-ranking">
+                Ver Ranking
+              </button>
+            </Link>
+            <Link to="/">
+              <button data-testid="btn-play-again" type="button">
+                Jogar novamente
+              </button>
+            </Link>
+          </div>
+        </div>
+      </>
     );
   }
 }

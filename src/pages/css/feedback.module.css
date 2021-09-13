@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap') ;
+
+:local( .purple_aside ) {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+:local( .elements_purple ) {
+  width: 100%;
+}
+
+:local( .svg_feedback ) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:local( .feedback_title ) {
+  text-align: center;
+}
+
+:local( .feedback_title h1 ) {
+  color: white;
+  font-family: Source Sans Pro , sans-serif;
+  font-size: 4.5em;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+:local( .white_side ) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+}
+
+:local( .feedback_text ) {
+  text-align: center;
+}
+
+:local( .feedback_text .message > p ) {
+  color: rgb(139, 85, 229);
+  font-family: Source Sans Pro , sans-serif;
+  font-size: 4.5em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+:local( .feedback_text p:not( :first-child ) ) {
+  font-size: 3.5em;
+}
+
+:local( .feedback_btns ) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+:local( .feedback_btns a ) {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+:local( .feedback_btns button ) {
+  align-items: center;
+  background-color: rgb(255, 199, 93);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  width: 40%;
+}
