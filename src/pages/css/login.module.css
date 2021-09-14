@@ -35,7 +35,7 @@
   margin-bottom: 30px;
 }
 
-.login_text a {
+.login_text > a {
   align-items: center;
   background-color: rgb(255, 198, 92);
   border-radius: 10px;
@@ -45,6 +45,12 @@
   padding: 5px 15px;
   text-decoration: none;
   width: auto;
+}
+
+.login_text > p a {
+  color: rgb(255, 198, 92);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .play_btn img {

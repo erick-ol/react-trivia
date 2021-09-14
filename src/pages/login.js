@@ -70,7 +70,7 @@ class Login extends React.Component {
             </div>
             <div className={ styles.login_text }>
               <h1>Trivia React Redux</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Projeto em grupo da <a href="https://www.linkedin.com/school/betrybe/" target="_blank">Trybe</a> realizado por <a href="https://www.linkedin.com/in/alinehoshino/" target="_blank">Aline Hoshino</a>, <a href="https://www.linkedin.com/in/douglasdrozda/" target="_blank">Douglas Drozda</a>, <a href="https://www.linkedin.com/in/erickosantos/" target="_blank">Erick Santos</a>, <a href="https://www.linkedin.com/in/lucas-santos-dev/" target="_blank">Lucas Santos</a> e <a href="https://www.linkedin.com/in/sthefany-caroline/" target="_blank">Sthefany Caroline</a>. Objetivo do projeto foi criar um jogo de perguntas e resposta no estilo Trivia utilizando a Api <a href="https://opentdb.com/" target="_blank">Open Trivia Database</a>.</p>
               <a href="https://github.com/tryber/sd-013-a-project-trivia-react-redux/pull/1" target="_blank">
                 GitHub do Projeto
                 <img src={ github } alt="github logo" />
