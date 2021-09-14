@@ -26,6 +26,7 @@ class Questions extends React.Component {
     this.timerMount = this.timerMount.bind(this);
     this.linkOrNext = this.linkOrNext.bind(this);
     this.sumScore = this.sumScore.bind(this);
+    this.progress_quest = this.progress_quest.bind(this);
   }
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class Questions extends React.Component {
 
   async getQuestions() {
     const getToken = JSON.parse(localStorage.getItem('token'));
-    const fetchQuestions = await fetch(`https://opentdb.com/api.php?amount=5&token=${getToken}`);
+    const fetchQuestions = await fetch(`https://opentdb.com/api.php?amount=5&token=${getToken}&encode=base64`);
     const json = await fetchQuestions.json();
     const { results } = json;
     this.setState({ questionsArray: results });
@@ -110,7 +111,7 @@ class Questions extends React.Component {
     const ten = 10;
     const two = 2;
     const three = 3;
-    switch (difficulty) {
+    switch (window.atob(difficulty)) {
     case 'easy':
       state.player.score += ten + (seconds);
       break;
@@ -141,6 +142,27 @@ class Questions extends React.Component {
     );
   }
 
+  progress_quest(id) {
+    switch (id) {
+      case 0:
+        return styles.question_0;
+        break;
+      case 1:
+        return styles.question_1;
+        break;
+      case 2:
+        return styles.question_2;
+        break;
+      case 3:
+        return styles.question_3;
+        break;
+      case 4:
+        return styles.question_4;
+        break;
+      default: return 0;
+    }
+  }
+
   render() {
     const { seconds } = this.state;
     const { questionsArray, id, answered } = this.state;
@@ -165,7 +187,7 @@ class Questions extends React.Component {
               <span data-testid="question-category">{questionsArray[id].category}</span>
             </p>
             <p className={ styles.question }>
-              <span data-testid="question-text">{questionsArray[id].question}</span>
+              <span data-testid="question-text">{window.atob(questionsArray[id].question)}</span>
             </p>
             <ul>
               <li>
@@ -176,7 +198,7 @@ class Questions extends React.Component {
                   className={ `${this.isAnswered('correct')} ${styles.answer}` }
                   disabled={ this.isCompleted() }
                 >
-                  {questionsArray[id].correct_answer}
+                  {window.atob(questionsArray[id].correct_answer)}
                 </button>
               </li>
               {questionsArray[id].incorrect_answers.map((incorrect, i) => (
@@ -188,11 +210,12 @@ class Questions extends React.Component {
                     className={ `${this.isAnswered('incorrect')} ${styles.answer}` }
                     disabled={ this.isCompleted() }
                   >
-                    {incorrect}
+                    {window.atob(incorrect)}
                   </button>
                 </li>
               ))}
             </ul>
+            <div className={ styles.progress_bar }><div className={this.progress_quest(id)}></div></div>
             {answered && this.renderButton()}
           </div>
         </div>
