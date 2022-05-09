@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.purple_aside {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+.svg_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg_login svg {
+  width: 50%;
+}
+
+.login_text {
+  color: white;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+.login_text h1 {
+  font-family: Source Sans Pro, sans-serif;
+  font-size: 4em;
+  margin-bottom: 15px;
+}
+
+.login_text p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+.login_text > a {
+  align-items: center;
+  background-color: rgb(255, 198, 92);
+  border-radius: 10px;
+  color: rgb(53, 48, 63);
+  display: inline-flex;
+  font-size: 1.5em;
+  padding: 5px 15px;
+  text-decoration: none;
+  width: auto;
+}
+
+.login_text > p a {
+  color: rgb(255, 198, 92);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.play_btn img {
+  margin-left: 15px;
+}
+
+.login_text a img {
+  margin-left: 15px;
+}
+
+@media (max-width: 880px) {
+  .purple_aside {
+    display: none;
+  }
+}
