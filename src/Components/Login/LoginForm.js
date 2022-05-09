@@ -1,28 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import useForm from '../../Hooks/useForm';
 import Input from '../Forms/Input';
 import styles from './css/LoginForm.module.css';
 import ls_logo from '../../assets/img/ls-logo.png';
 import next from '../../assets/img/next.png';
 import gear from '../../assets/img/gear.png';
+import { addPlayerInfo } from '../../store/player';
 
 const LoginForm = () => {
   const username = useForm();
   const email = useForm('email');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async () => {
-    const state = {
-      player: {
+    dispatch(
+      addPlayerInfo({
         name: username.value,
-        assertions: 0,
-        score: 0,
-        gravatarEmail: email.value,
-      },
-    };
-    localStorage.setItem('state', JSON.stringify(state));
+        email: email.value,
+      }),
+    );
 
+    // saving token
     const Api = await fetch(
       'https://opentdb.com/api_token.php?command=request',
     );

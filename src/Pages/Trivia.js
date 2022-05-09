@@ -5,6 +5,8 @@ import Loading from '../Components/SVG/Loading';
 import styles from './css/trivia.module.css';
 import nextImg from '../assets/img/next_black.png';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addAssertion, addPoints } from '../store/player';
 
 const Trivia = () => {
   const [seconds, setSeconds] = React.useState(30);
@@ -12,6 +14,7 @@ const Trivia = () => {
   const [questions, setQuestions] = React.useState([]);
   const [id, setId] = React.useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     getQuestions();
@@ -38,22 +41,20 @@ const Trivia = () => {
     setAnswered(true);
     const difficulty = questions[id].difficulty;
 
-    const state = JSON.parse(localStorage.getItem('state'));
     switch (window.atob(difficulty)) {
       case 'easy':
-        state.player.score += 10 + seconds;
+        dispatch(addPoints(10 + seconds));
         break;
       case 'medium':
-        state.player.score += 10 + seconds * 2;
+        dispatch(addPoints(10 + seconds * 2));
         break;
       case 'hard':
-        state.player.score += 10 + seconds * 3;
+        dispatch(addPoints(10 + seconds * 3));
         break;
       default:
         return;
     }
-    state.player.assertions += 1;
-    localStorage.setItem('state', JSON.stringify(state));
+    dispatch(addAssertion());
   };
 
   const answeredStyle = (className) => {
