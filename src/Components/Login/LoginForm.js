@@ -1,22 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useForm from '../../Hooks/useForm';
+import Input from '../Forms/Input';
 import styles from './css/LoginForm.module.css';
 import ls_logo from '../../assets/img/ls-logo.png';
 import next from '../../assets/img/next.png';
 import gear from '../../assets/img/gear.png';
 
 const LoginForm = () => {
-  const [email, setEmail] = React.useState('');
-  const [username, setUsername] = React.useState('');
+  const username = useForm();
+  const email = useForm('email');
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
     const state = {
       player: {
-        name: username,
+        name: username.value,
         assertions: 0,
         score: 0,
-        gravatarEmail: email,
+        gravatarEmail: email.value,
       },
     };
     localStorage.setItem('state', JSON.stringify(state));
@@ -36,25 +38,13 @@ const LoginForm = () => {
           <img src={ls_logo} alt="logo ls" />
         </div>
         <div className={styles.login_input}>
-          <input
-            type="text"
-            name="username"
-            placeholder="name"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="e-mail"
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
-          />
+          <Input placeholder="name" type="text" name="username" {...username} />
+          <Input placeholder="email" type="text" name="email" {...email} />
         </div>
         <div className={styles.login_btns}>
           <button
             type="button"
-            disabled={!(Boolean(email) && Boolean(username))}
+            disabled={!(Boolean(email.value) && Boolean(username.value))}
             onClick={handleSubmit}
             className={styles.play_btn}
           >
@@ -62,10 +52,8 @@ const LoginForm = () => {
             <img src={next} alt="" />
           </button>
           <button type="button" className={styles.config_link}>
-            <a href="#">
-              Configurações
-              <img src={gear} alt="configs" />
-            </a>
+            Configurações
+            <img src={gear} alt="configs" />
           </button>
         </div>
       </div>
