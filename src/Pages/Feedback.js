@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import md5 from 'crypto-js/md5';
-import Header from '../components/Header';
+import Header from '../Components/Header';
 import styles from './css/feedback.module.css';
-import FeedbackSvg from '../components/SVG/FeedbackSvg';
+import FeedbackSvg from '../Components/SVG/FeedbackSvg';
 
 const Feedback = () => {
   const [state, setState] = React.useState(null);

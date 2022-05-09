@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
-import TimeSvg from '../components/SVG/TimeSvg';
-import Loading from '../components/SVG/Loading';
+import Header from '../Components/Header';
+import TimeSvg from '../Components/SVG/TimeSvg';
+import Loading from '../Components/SVG/Loading';
 import styles from './css/trivia.module.css';
 import nextImg from '../assets/img/next_black.png';
 import { useNavigate } from 'react-router-dom';

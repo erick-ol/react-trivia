@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RankingSvg from '../components/SVG/RankingSvg';
+import RankingSvg from '../Components/SVG/RankingSvg';
 import styles from './css/ranking.module.css';
 
 const Ranking = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Login from './pages/Login';
-import Trivia from './pages/Trivia';
-import FeedBack from './pages/Feedback';
-import Ranking from './pages/Ranking';
+import Login from './Pages/Login';
+import Trivia from './Pages/Trivia';
+import FeedBack from './Pages/Feedback';
+import Ranking from './Pages/Ranking';
 
 export default function App() {
   return (
