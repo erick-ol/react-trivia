@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Trivia from './pages/Trivia';
 import Settings from './pages/settings';
 import FeedBack from './pages/Feedback';
-import Ranking from './pages/ranking';
+import Ranking from './pages/Ranking';
 
 export default function App() {
   return (
