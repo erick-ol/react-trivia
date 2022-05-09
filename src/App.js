@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
-import Trivia from './pages/trivia';
+import Trivia from './pages/Trivia';
 import Settings from './pages/settings';
 import FeedBack from './pages/feedback';
 import Ranking from './pages/ranking';
