@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-// simple reducer to config store
-const simpleReducer = () => 0;
+// reducers
+import player from './player';
 
-const reducer = combineReducers({ simpleReducer });
+const reducer = combineReducers({ player });
 const store = configureStore({ reducer });
 
 export default store;
