@@ -1,15 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RankingSvg from '../Components/SVG/RankingSvg';
 import styles from './css/ranking.module.css';
 
 const Ranking = () => {
   const [players, setPlayers] = React.useState(null);
+  const ranking = useSelector((state) => state.ranking);
 
   React.useEffect(() => {
-    const ranking = JSON.parse(localStorage.getItem('ranking'));
-    setPlayers(ranking.sort((a, b) => b.score - a.score));
-  }, []);
+    if (ranking.players)
+      setPlayers(ranking.players.sort((a, b) => b.score - a.score));
+  }, [ranking.players]);
 
   return (
     <>

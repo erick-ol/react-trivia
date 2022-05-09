@@ -5,6 +5,7 @@ import Header from '../Components/Header';
 import styles from './css/feedback.module.css';
 import FeedbackSvg from '../Components/SVG/FeedbackSvg';
 import { resetPlayer } from '../store/player';
+import { addPlayerToRanking } from '../store/ranking';
 
 const Feedback = () => {
   const { name, score, assertions, image } = useSelector(
@@ -25,13 +26,7 @@ const Feedback = () => {
       name,
       score,
     };
-    if (!localStorage.getItem('ranking')) {
-      localStorage.setItem('ranking', JSON.stringify([playerRank]));
-    } else {
-      const players = JSON.parse(localStorage.getItem('ranking'));
-      players.push(playerRank);
-      localStorage.setItem('ranking', JSON.stringify(players));
-    }
+    dispatch(addPlayerToRanking(playerRank));
 
     return () => {
       dispatch(resetPlayer());

@@ -6,17 +6,13 @@ const slice = createSlice({
     players: JSON.parse(window.localStorage.getItem('ranking')) || null,
   },
   reducers: {
-    addPlayerToRanking(state, payload) {
+    addPlayerToRanking(state, { payload }) {
       if (!state.players) {
-        localStorage.setItem('ranking', JSON.stringify([payload]));
-
         state.players = [payload];
+        localStorage.setItem('ranking', JSON.stringify(state.players));
       } else {
-        const players = JSON.parse(localStorage.getItem('ranking'));
-        players.push(payload);
-        localStorage.setItem('ranking', JSON.stringify(players));
-
         state.players.push(payload);
+        localStorage.setItem('ranking', JSON.stringify(state.players));
       }
     },
   },
