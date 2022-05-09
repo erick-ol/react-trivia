@@ -1,21 +1,9 @@
 import React from 'react';
-import md5 from 'crypto-js/md5';
+import { useSelector } from 'react-redux';
 import styles from './style.module.css';
 
 const Header = () => {
-  const getInfo = () => {
-    const state = JSON.parse(localStorage.getItem('state'));
-    const { gravatarEmail, name, score } = state.player;
-    const hash = md5(gravatarEmail).toString();
-    const obj = {
-      image: `https://www.gravatar.com/avatar/${hash}`,
-      name,
-      score,
-    };
-    return obj;
-  };
-
-  const { image, name, score } = getInfo();
+  const { image, name, score } = useSelector((state) => state.player);
 
   return (
     <header className={styles.header}>
