@@ -1,0 +1,15 @@
+.input {
+  border: 1px solid rgb(53, 48, 63);
+  border-radius: 10px;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  max-width: 380px;
+  outline: none;
+  padding: 5px 20px;
+}
+
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
