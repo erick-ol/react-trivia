@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LoginSvg from '../components/SVG/LoginSvg';
 import styles from './css/login.module.css';
 import github from '../assets/img/github.png';
@@ -132,10 +132,10 @@ const Login = () => {
               <img src={next} alt="" />
             </button>
             <button type="button" className={styles.config_link}>
-              <Link to="/configs">
+              <a href="#">
                 Configurações
                 <img src={gear} alt="configs" />
-              </Link>
+              </a>
             </button>
           </div>
         </div>
