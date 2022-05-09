@@ -1,20 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import md5 from 'crypto-js/md5';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Components/Header';
 import styles from './css/feedback.module.css';
 import FeedbackSvg from '../Components/SVG/FeedbackSvg';
+import { resetPlayer } from '../store/player';
 
 const Feedback = () => {
-  const [state, setState] = React.useState(null);
+  const { name, score, assertions, image } = useSelector(
+    (state) => state.player,
+  );
   const [message, setMessage] = React.useState('');
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const getState = JSON.parse(localStorage.getItem('state'));
-    setState(getState);
-    const { player } = getState;
-    const { name, score, gravatarEmail, assertions } = player;
-
     // Feedback message
     if (assertions < 3) {
       setMessage('Podia ser melhor...');
@@ -22,9 +21,7 @@ const Feedback = () => {
 
     // Saving at ranking
     const playerRank = {
-      picture: `https://www.gravatar.com/avatar/${md5(
-        gravatarEmail,
-      ).toString()}`,
+      picture: image,
       name,
       score,
     };
@@ -35,7 +32,11 @@ const Feedback = () => {
       players.push(playerRank);
       localStorage.setItem('ranking', JSON.stringify(players));
     }
-  }, []);
+
+    return () => {
+      dispatch(resetPlayer());
+    };
+  }, [assertions, name, score, dispatch, image]);
 
   return (
     <>
@@ -49,24 +50,23 @@ const Feedback = () => {
           </div>
         </div>
       </div>
-      {state && (
-        <div className={styles.white_side}>
-          <Header />
-          <div className={styles.feedback_text}>
-            <p className={styles.message}>{message}</p>
-            <p>Você obteve {state.player.assertions} acertos</p>
-            <p>Um total de {state.player.score} pontos</p>
-          </div>
-          <div className={styles.feedback_btns}>
-            <Link to="/ranking">
-              <button type="button">Ver Ranking</button>
-            </Link>
-            <Link to="/">
-              <button type="button">Jogar novamente</button>
-            </Link>
-          </div>
+
+      <div className={styles.white_side}>
+        <Header />
+        <div className={styles.feedback_text}>
+          <p className={styles.message}>{message}</p>
+          <p>Você obteve {assertions} acertos</p>
+          <p>Um total de {score} pontos</p>
         </div>
-      )}
+        <div className={styles.feedback_btns}>
+          <Link to="/ranking">
+            <button type="button">Ver Ranking</button>
+          </Link>
+          <Link to="/">
+            <button type="button">Jogar novamente</button>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
