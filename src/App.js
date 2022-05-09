@@ -4,7 +4,7 @@ import './App.css';
 import Login from './pages/Login';
 import Trivia from './pages/Trivia';
 import Settings from './pages/settings';
-import FeedBack from './pages/feedback';
+import FeedBack from './pages/Feedback';
 import Ranking from './pages/ranking';
 
 export default function App() {
