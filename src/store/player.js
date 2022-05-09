@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import md5 from 'crypto-js/md5';
 
 const slice = createSlice({
   name: 'player',
@@ -7,11 +8,16 @@ const slice = createSlice({
     assertions: 0,
     score: 0,
     email: '',
+    image: '',
   },
   reducers: {
     addPlayerInfo(state, { payload }) {
-      state.name = payload.name;
-      state.email = payload.email;
+      const { name, email } = payload;
+      const hash = md5(email).toString();
+
+      state.image = `https://www.gravatar.com/avatar/${hash}`;
+      state.name = name;
+      state.email = email;
     },
     addAssertion(state) {
       state.assertions += 1;
