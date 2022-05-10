@@ -1,24 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../Header';
-import nextImg from '../../assets/img/next_black.png';
 import styles from '../../Pages/css/trivia.module.css';
 import { addAssertion, addPoints } from '../../store/player';
-import {
-  decreaseSeconds,
-  increaseId,
-  resetSeconds,
-  setAnswered,
-} from '../../store/trivia';
+import { decreaseSeconds, setAnswered } from '../../store/trivia';
 import { progressBar } from './helpers/progressBar';
 import { answeredStyle } from './helpers/answeredStyle';
+import TriviaNextButton from './TriviaNextButton';
 
 const TriviaQuestionsSide = () => {
   const { data } = useSelector((state) => state.questions);
   const { seconds, id, answered } = useSelector((state) => state.trivia);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -46,17 +39,6 @@ const TriviaQuestionsSide = () => {
         return;
     }
     dispatch(addAssertion());
-  };
-
-  const next = () => {
-    dispatch(increaseId());
-    dispatch(setAnswered());
-    dispatch(resetSeconds());
-  };
-
-  const linkOrNext = () => {
-    if (id === 4) navigate('/feedback');
-    else next();
   };
 
   return (
@@ -101,17 +83,7 @@ const TriviaQuestionsSide = () => {
             <div className={styles.progress_bar}>
               <div className={progressBar(id, styles)}></div>
             </div>
-            {answered && (
-              <button
-                type="button"
-                onClick={linkOrNext}
-                data-testid="btn-next"
-                className={styles.next}
-              >
-                Próxima
-                <img src={nextImg} alt="proxima" />
-              </button>
-            )}
+            {answered && <TriviaNextButton />}
           </div>
         </div>
       )}
