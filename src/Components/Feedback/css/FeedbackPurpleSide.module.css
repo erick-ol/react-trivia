@@ -1,0 +1,40 @@
+.purple_aside {
+  align-items: center;
+  background-color: rgb(139, 85, 229);
+  display: flex;
+  height: 100vh;
+  width: 50%;
+}
+
+.elements_purple {
+  width: 100%;
+}
+
+.svg_feedback {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.svg_feedback svg {
+  width: 50%;
+}
+
+.feedback_title {
+  text-align: center;
+}
+
+.feedback_title h1 {
+  color: white;
+  font-family: Source Sans Pro, sans-serif;
+  font-size: 4.5em;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding: 0 60px;
+}
+
+@media (max-width: 999px) {
+  .purple_aside {
+    display: none;
+  }
+}
