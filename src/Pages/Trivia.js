@@ -5,20 +5,21 @@ import Loading from '../Components/SVG/Loading';
 import styles from './css/trivia.module.css';
 import nextImg from '../assets/img/next_black.png';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addAssertion, addPoints } from '../store/player';
+import { fetchQuestions } from '../store/questions';
 
 const Trivia = () => {
+  const { loading, data } = useSelector((state) => state.questions);
   const [seconds, setSeconds] = React.useState(30);
   const [answered, setAnswered] = React.useState(false);
-  const [questions, setQuestions] = React.useState([]);
   const [id, setId] = React.useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    getQuestions();
-  }, []);
+    if (!data) dispatch(fetchQuestions());
+  }, [data, dispatch]);
 
   React.useEffect(() => {
     if (!answered && seconds > 0) {
@@ -27,19 +28,9 @@ const Trivia = () => {
     if (seconds === 0) setAnswered(true);
   }, [seconds, answered]);
 
-  const getQuestions = async () => {
-    const getToken = JSON.parse(localStorage.getItem('token'));
-    const fetchQuestions = await fetch(
-      `https://opentdb.com/api.php?amount=5&token=${getToken}&encode=base64`,
-    );
-    const json = await fetchQuestions.json();
-    const { results } = json;
-    setQuestions(results);
-  };
-
   const sumScore = () => {
     setAnswered(true);
-    const difficulty = questions[id].difficulty;
+    const difficulty = data[id].difficulty;
 
     switch (window.atob(difficulty)) {
       case 'easy':
@@ -92,7 +83,7 @@ const Trivia = () => {
     else next();
   };
 
-  if (questions.length === 0) return <Loading />;
+  if (loading) return <Loading />;
   return (
     <>
       <div className={styles.purple_aside}>
@@ -105,56 +96,58 @@ const Trivia = () => {
           </div>
         </div>
       </div>
-      <div className={styles.white_side}>
-        <Header />
-        <div className={styles.questions_main}>
-          <p className={styles.category}>
-            Category:
-            <span>{questions[id].category}</span>
-          </p>
-          <p className={styles.question}>
-            <span>{window.atob(questions[id].question)}</span>
-          </p>
-          <ul>
-            <li>
-              <button
-                type="button"
-                onClick={sumScore}
-                className={`${answeredStyle('correct')} ${styles.answer}`}
-                disabled={answered}
-              >
-                {window.atob(questions[id].correct_answer)}
-              </button>
-            </li>
-            {questions[id].incorrect_answers.map((incorrect, i) => (
-              <li key={i}>
+      {data && (
+        <div className={styles.white_side}>
+          <Header />
+          <div className={styles.questions_main}>
+            <p className={styles.category}>
+              Category:
+              <span>{data[id].category}</span>
+            </p>
+            <p className={styles.question}>
+              <span>{window.atob(data[id].question)}</span>
+            </p>
+            <ul>
+              <li>
                 <button
                   type="button"
-                  onClick={() => setAnswered(true)}
-                  className={`${answeredStyle('incorrect')} ${styles.answer}`}
+                  onClick={sumScore}
+                  className={`${answeredStyle('correct')} ${styles.answer}`}
                   disabled={answered}
                 >
-                  {window.atob(incorrect)}
+                  {window.atob(data[id].correct_answer)}
                 </button>
               </li>
-            ))}
-          </ul>
-          <div className={styles.progress_bar}>
-            <div className={progressBar()}></div>
+              {data[id].incorrect_answers.map((incorrect, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => setAnswered(true)}
+                    className={`${answeredStyle('incorrect')} ${styles.answer}`}
+                    disabled={answered}
+                  >
+                    {window.atob(incorrect)}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.progress_bar}>
+              <div className={progressBar()}></div>
+            </div>
+            {answered && (
+              <button
+                type="button"
+                onClick={linkOrNext}
+                data-testid="btn-next"
+                className={styles.next}
+              >
+                Próxima
+                <img src={nextImg} alt="proxima" />
+              </button>
+            )}
           </div>
-          {answered && (
-            <button
-              type="button"
-              onClick={linkOrNext}
-              data-testid="btn-next"
-              className={styles.next}
-            >
-              Pŕoxima
-              <img src={nextImg} alt="proxima" />
-            </button>
-          )}
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -22,13 +22,6 @@ const LoginForm = () => {
         email: email.value,
       }),
     );
-
-    // saving token
-    const Api = await fetch(
-      'https://opentdb.com/api_token.php?command=request',
-    );
-    const json = await Api.json();
-    localStorage.setItem('token', JSON.stringify(json.token));
     navigate('/trivia');
   };
 
