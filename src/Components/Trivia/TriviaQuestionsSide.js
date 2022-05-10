@@ -12,6 +12,8 @@ import {
   resetSeconds,
   setAnswered,
 } from '../../store/trivia';
+import { progressBar } from './helpers/progressBar';
+import { answeredStyle } from './helpers/answeredStyle';
 
 const TriviaQuestionsSide = () => {
   const { data } = useSelector((state) => state.questions);
@@ -46,30 +48,6 @@ const TriviaQuestionsSide = () => {
     dispatch(addAssertion());
   };
 
-  const answeredStyle = (className) => {
-    if (className === 'correct') {
-      return answered ? styles.correct : '';
-    }
-    return answered ? styles.incorrect : '';
-  };
-
-  const progressBar = () => {
-    switch (id) {
-      case 0:
-        return styles.question_0;
-      case 1:
-        return styles.question_1;
-      case 2:
-        return styles.question_2;
-      case 3:
-        return styles.question_3;
-      case 4:
-        return styles.question_4;
-      default:
-        return 0;
-    }
-  };
-
   const next = () => {
     dispatch(increaseId());
     dispatch(setAnswered());
@@ -95,7 +73,9 @@ const TriviaQuestionsSide = () => {
                 <button
                   type="button"
                   onClick={sumScore}
-                  className={`${answeredStyle('correct')} ${styles.answer}`}
+                  className={`${answeredStyle('correct', styles, answered)} ${
+                    styles.answer
+                  }`}
                   disabled={answered}
                 >
                   {window.atob(data[id].correct_answer)}
@@ -106,7 +86,11 @@ const TriviaQuestionsSide = () => {
                   <button
                     type="button"
                     onClick={() => dispatch(setAnswered())}
-                    className={`${answeredStyle('incorrect')} ${styles.answer}`}
+                    className={`${answeredStyle(
+                      'incorrect',
+                      styles,
+                      answered,
+                    )} ${styles.answer}`}
                     disabled={answered}
                   >
                     {window.atob(incorrect)}
@@ -115,7 +99,7 @@ const TriviaQuestionsSide = () => {
               ))}
             </ul>
             <div className={styles.progress_bar}>
-              <div className={progressBar()}></div>
+              <div className={progressBar(id, styles)}></div>
             </div>
             {answered && (
               <button
