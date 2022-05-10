@@ -8,28 +8,39 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAssertion, addPoints } from '../store/player';
 import { fetchQuestions } from '../store/questions';
+import {
+  decreaseSeconds,
+  increaseId,
+  resetSeconds,
+  resetTrivia,
+  setAnswered,
+} from '../store/trivia';
 
 const Trivia = () => {
   const { loading, data } = useSelector((state) => state.questions);
-  const [seconds, setSeconds] = React.useState(30);
-  const [answered, setAnswered] = React.useState(false);
-  const [id, setId] = React.useState(0);
+  const { seconds, id, answered } = useSelector((state) => state.trivia);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    return () => {
+      dispatch(resetTrivia());
+    };
+  }, [dispatch]);
 
   React.useEffect(() => {
     if (!data) dispatch(fetchQuestions());
   }, [data, dispatch]);
 
   React.useEffect(() => {
-    if (!answered && seconds > 0) {
-      setTimeout(() => setSeconds(seconds - 1), 1000);
+    if (data && !answered && seconds > 0) {
+      setTimeout(() => dispatch(decreaseSeconds()), 1000);
     }
-    if (seconds === 0) setAnswered(true);
-  }, [seconds, answered]);
+    if (!answered && seconds === 0) dispatch(setAnswered());
+  }, [seconds, answered, dispatch, data]);
 
   const sumScore = () => {
-    setAnswered(true);
+    dispatch(setAnswered());
     const difficulty = data[id].difficulty;
 
     switch (window.atob(difficulty)) {
@@ -73,9 +84,9 @@ const Trivia = () => {
   };
 
   const next = () => {
-    setId(id + 1);
-    setAnswered(false);
-    setSeconds(30);
+    dispatch(increaseId());
+    dispatch(setAnswered());
+    dispatch(resetSeconds());
   };
 
   const linkOrNext = () => {
@@ -122,7 +133,7 @@ const Trivia = () => {
                 <li key={i}>
                   <button
                     type="button"
-                    onClick={() => setAnswered(true)}
+                    onClick={() => dispatch(setAnswered())}
                     className={`${answeredStyle('incorrect')} ${styles.answer}`}
                     disabled={answered}
                   >

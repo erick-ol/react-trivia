@@ -10,7 +10,7 @@ const Ranking = () => {
 
   React.useEffect(() => {
     if (ranking.players)
-      setPlayers(ranking.players.sort((a, b) => b.score - a.score));
+      setPlayers(ranking.players.slice().sort((a, b) => b.score - a.score));
   }, [ranking.players]);
 
   return (
