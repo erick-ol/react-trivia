@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { increaseId, resetSeconds, setAnswered } from '../../store/trivia';
 import nextImg from '../../assets/img/next_black.png';
-import styles from '../../Pages/css/trivia.module.css';
+import styles from './css/TriviaNextButton.module.css';
 
 const TriviaNextButton = () => {
   const { id } = useSelector((state) => state.trivia);

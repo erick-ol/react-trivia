@@ -1,0 +1,17 @@
+.next {
+  align-items: center;
+  background-color: rgb(255, 199, 93);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 5px 30px;
+  text-transform: uppercase;
+}
+
+.next img {
+  margin-left: 15px;
+}

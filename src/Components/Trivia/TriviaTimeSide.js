@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import TimeSvg from '../SVG/TimeSvg';
-import styles from '../../Pages/css/trivia.module.css';
+import styles from './css/TriviaTimeSide.module.css';
 
 const TriviaTimeSide = () => {
   const { seconds } = useSelector((state) => state.trivia);

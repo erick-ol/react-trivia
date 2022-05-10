@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../Header';
-import styles from '../../Pages/css/trivia.module.css';
+import styles from './css/TriviaQuestionsSide.module.css';
 import { addAssertion, addPoints } from '../../store/player';
 import { decreaseSeconds, setAnswered } from '../../store/trivia';
 import { progressBar } from './helpers/progressBar';
