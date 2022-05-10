@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../Components/Header';
-import TimeSvg from '../Components/SVG/TimeSvg';
 import Loading from '../Components/SVG/Loading';
 import styles from './css/trivia.module.css';
 import nextImg from '../assets/img/next_black.png';
@@ -15,6 +14,7 @@ import {
   resetTrivia,
   setAnswered,
 } from '../store/trivia';
+import TriviaTimeSide from '../Components/Trivia/TriviaTimeSide';
 
 const Trivia = () => {
   const { loading, data } = useSelector((state) => state.questions);
@@ -97,24 +97,11 @@ const Trivia = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <div className={styles.purple_aside}>
-        <div className={styles.elements_purple}>
-          <div className={styles.svg_time}>
-            <TimeSvg />
-          </div>
-          <div className={styles.time_text}>
-            <span>{seconds}</span>
-          </div>
-        </div>
-      </div>
+      <TriviaTimeSide />
       {data && (
         <div className={styles.white_side}>
           <Header />
           <div className={styles.questions_main}>
-            <p className={styles.category}>
-              Category:
-              <span>{data[id].category}</span>
-            </p>
             <p className={styles.question}>
               <span>{window.atob(data[id].question)}</span>
             </p>
