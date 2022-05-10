@@ -14,28 +14,42 @@ const LoginInfoSide = () => {
           <h1>Trivia React Redux</h1>
           <p>
             Projeto em grupo da{' '}
-            <a href="https://www.linkedin.com/school/betrybe/" target="_blank">
+            <a
+              href="https://www.linkedin.com/school/betrybe/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Trybe
             </a>{' '}
             realizado por{' '}
-            <a href="https://www.linkedin.com/in/alinehoshino/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/alinehoshino/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Aline Hoshino
             </a>
             ,{' '}
             <a
               href="https://www.linkedin.com/in/douglasdrozda/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Douglas Drozda
             </a>
             ,{' '}
-            <a href="https://www.linkedin.com/in/erickosantos/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/erickosantos/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Erick Santos
             </a>
             ,{' '}
             <a
               href="https://www.linkedin.com/in/lucas-santos-dev/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Lucas Santos
             </a>{' '}
@@ -43,12 +57,17 @@ const LoginInfoSide = () => {
             <a
               href="https://www.linkedin.com/in/sthefany-caroline/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Sthefany Caroline
             </a>
             . Objetivo do projeto foi criar um jogo de perguntas e resposta no
             estilo Trivia utilizando a Api{' '}
-            <a href="https://opentdb.com/" target="_blank">
+            <a
+              href="https://opentdb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Open Trivia Database
             </a>
             .
@@ -56,6 +75,7 @@ const LoginInfoSide = () => {
           <a
             href="https://github.com/tryber/sd-013-a-project-trivia-react-redux/pull/1"
             target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub do Projeto
             <img src={github} alt="github logo" />
